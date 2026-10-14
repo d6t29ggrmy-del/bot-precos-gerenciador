@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<!-- Gerenciador de Produtos | v3.1 | 13/10/2026 09:34 pm | última alteração: recebe produtos do iPhone/iPad (Compartilhar → Salvar no robô) como "aguardando"; o robô completa nome, marca e preço -->
+<!-- Gerenciador de Produtos | v3.2 | 14/10/2026 01:14 pm | última alteração: botões Atualizar dados e Desconectar este navegador movidos do rodapé para o cabeçalho -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
 <title>Gerenciador de Produtos</title>
@@ -24,6 +24,10 @@ h1{margin:0;font-size:1.75rem;font-weight:700}
 header p{margin:.2rem 0 0;color:#C3D0DD;font-size:.94rem}
 .selo{background:#0F1C2B;border:1px solid #33475C;border-radius:.6rem;padding:.35rem .8rem;color:var(--ambar);font-weight:700;font-size:.82rem;line-height:1.35;text-align:right;white-space:nowrap}
 .wrap{max-width:66rem;margin:0 auto}
+.topo-dir{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;justify-content:flex-end}
+.btn-topo{font:inherit;font-size:.85rem;font-weight:700;color:#fff;background:transparent;border:1px solid #6F86A0;border-radius:.6rem;padding:.4rem .75rem;cursor:pointer;min-height:2.2rem}
+.btn-topo:hover{background:#ffffff1f;border-color:#C3D0DD}
+@media (max-width:560px){.topo-dir{justify-content:flex-start;width:100%}}
 main{padding:1.2rem}
 section{margin-bottom:1.6rem}
 h2{font-size:1.3rem;margin:0 0 .7rem;color:var(--navy)}
@@ -85,7 +89,7 @@ footer{padding:0 1.2rem 1.8rem;color:var(--suave);font-size:.85rem}
 <body>
 <header><div class="wrap">
   <div><h1>Gerenciador de Produtos</h1><p>Produtos vigiados pelo robô de preços nas lojas americanas.</p></div>
-  <div class="selo" aria-label="Versão do Gerenciador">v3.1 · 13-out-26<br>09:34 pm</div>
+  <div class="topo-dir"><button class="btn-topo" id="btnAtualizar">Atualizar dados</button><button class="btn-topo" id="btnEsquecer">Desconectar este navegador</button><div class="selo" aria-label="Versão do Gerenciador">v3.2 · 14-out-26<br>01:14 pm</div></div>
 </div></header>
 <main class="wrap">
 
@@ -136,7 +140,6 @@ footer{padding:0 1.2rem 1.8rem;color:var(--suave);font-size:.85rem}
   <div id="lista"></div>
 </section>
 </main>
-<footer class="wrap"><button class="secundario" id="btnAtualizar">Atualizar dados</button> <button class="secundario" id="btnEsquecer">Desconectar este navegador</button></footer>
 
 <script>
 const REPO = "d6t29ggrmy-del/robo-de-precos", RAMO = "main", ARQ = "produtos.csv";
