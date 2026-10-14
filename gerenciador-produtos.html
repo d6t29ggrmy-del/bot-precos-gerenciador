@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<!-- Gerenciador de Produtos | v3.0 | 13/10/2026 09:00 pm | última alteração: captura de um clique — recebe o produto do botão Capturar Produto e grava sozinho no robô (publicado no GitHub Pages) -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Gerenciador de Produtos</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta name="apple-mobile-web-app-title" content="Preços">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style>
+:root{--navy:#16283C;--ambar:#E8A13D;--ambar-esc:#B97817;--papel:#F6F7F4;--tinta:#1C2430;--suave:#5B6B7E;--input:#EBFFFF;--ok:#2E7D55;--alerta:#B7791F;--erro:#B03A2E;--linha:#D9DFE6;
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+*,*::before,*::after{box-sizing:inherit}
+[hidden]{display:none!important}
+html{font-size:17px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media (hover:hover) and (pointer:fine){html{font-size:max(10px,1.3vw)}body{min-width:707px}}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:Calibri,Carlito,"Segoe UI",-apple-system,Helvetica,Arial,sans-serif;font-size:1rem;line-height:1.45}
+header{background:var(--navy);color:#fff;padding:1.2rem 1.2rem 1.4rem}
+header .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:.7rem;flex-wrap:wrap}
+h1{margin:0;font-size:1.75rem;font-weight:700}
+header p{margin:.2rem 0 0;color:#C3D0DD;font-size:.94rem}
+.selo{background:#0F1C2B;border:1px solid #33475C;border-radius:.6rem;padding:.35rem .8rem;color:var(--ambar);font-weight:700;font-size:.82rem;line-height:1.35;text-align:right;white-space:nowrap}
+.wrap{max-width:66rem;margin:0 auto}
+main{padding:1.2rem}
+section{margin-bottom:1.6rem}
+h2{font-size:1.3rem;margin:0 0 .7rem;color:var(--navy)}
+form,.painel{background:#fff;border:1px solid var(--linha);border-radius:.6rem;padding:1.05rem}
+.grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(10.5rem,1fr));gap:.8rem}
+.largo{grid-column:1/-1}
+label{display:block;font-size:.88rem;color:var(--suave);margin-bottom:.23rem}
+input,select{width:100%;font:inherit;color:var(--tinta);background:var(--input);border:1px solid #9FC4CC;border-radius:.35rem;padding:.55rem .65rem;min-height:2.6rem}
+input:focus,select:focus,button:focus-visible{outline:3px solid var(--ambar);outline-offset:1px}
+.dica{font-size:.82rem;color:var(--suave);margin-top:.23rem}
+.faixa{background:#FFF7E6;border-left:.25rem solid var(--alerta);padding:.5rem .7rem;border-radius:.25rem;font-size:.9rem;margin:0 0 .8rem;display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap}
+button{font:inherit;border:0;border-radius:.35rem;padding:.55rem .95rem;min-height:2.6rem;cursor:pointer}
+.principal{background:var(--navy);color:#fff;font-weight:700}
+.secundario{background:#E6EBF0;color:var(--navy)}
+.realce{background:var(--ambar);color:#2A1E05;font-weight:700}
+.perigo{background:#fff;color:var(--erro);border:1px solid #E3B9B4}
+button:disabled{opacity:.5;cursor:default}
+.previa{margin-top:.95rem;padding:.8rem;border:1px dashed var(--ambar);border-radius:.45rem;background:#FFFBF3;font-size:.95rem}
+.previa b{color:var(--navy)}
+.aviso{color:var(--alerta);font-weight:700}.erro{color:var(--erro);font-weight:700}.certo{color:var(--ok);font-weight:700}
+.acoes{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.95rem}
+#msg{min-height:1.4rem;margin-top:.6rem}
+.filtro{display:flex;gap:.6rem;align-items:center;margin-bottom:.8rem;flex-wrap:wrap}
+.filtro input{max-width:20rem}
+.filtro span{color:var(--suave);font-size:.9rem}
+/* cartão = etiqueta de preço: corpo + canhoto com o preço-gatilho */
+.etq{display:grid;grid-template-columns:1fr auto;background:#fff;border:1px solid var(--linha);border-radius:.6rem;margin-bottom:.75rem;overflow:hidden}
+.etq .corpo{padding:.85rem 1.05rem;min-width:0}
+.etq .canhoto{position:relative;padding:.85rem 1.05rem .85rem 1.5rem;border-left:2px dashed var(--linha);background:#FFFBF3;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:.4rem;min-width:11rem}
+.etq .canhoto::before{content:"";position:absolute;left:.45rem;top:50%;transform:translateY(-50%);width:.55rem;height:.55rem;border-radius:50%;background:var(--papel);border:1px solid var(--linha)}
+.nome{font-size:1.12rem;font-weight:700;color:var(--navy);line-height:1.2}
+.tipo{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.05rem .4rem;border-radius:.3rem;margin-right:.4rem;vertical-align:middle}
+.tipo.e{background:#E6EBF0;color:var(--navy)}.tipo.g{background:#E3F2E9;color:var(--ok)}
+.meta{color:var(--suave);font-size:.88rem;margin-top:.2rem}
+.meta a{color:var(--navy)}
+.leitura{font-size:.88rem;margin-top:.35rem}
+.gatilho{font-size:1.25rem;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums}
+.gatilho small{display:block;font-size:.78rem;font-weight:400;color:var(--suave)}
+.btns{display:flex;gap:.4rem}
+.btns button{min-height:2.1rem;padding:.3rem .7rem;font-size:.9rem}
+.etq.aberta{border:2px solid var(--ambar)}
+.editor{grid-column:1/-1;border-top:2px dashed var(--ambar);background:#FFFBF3;padding:.9rem 1.05rem}
+.editor h3{margin:0 0 .6rem;font-size:1rem;color:var(--navy)}
+.editor .previa{margin-top:.7rem;background:#fff}
+.editor .msgEd{min-height:1.2rem;margin-top:.4rem}
+.cap{border-left:.35rem solid var(--ambar)}
+.cap .titulo{font-size:1.35rem;font-weight:700;color:var(--navy);margin:0 0 .3rem}
+.cap.certo{border-left-color:var(--ok)}.cap.certo .titulo{color:var(--ok)}
+.cap.erro{border-left-color:var(--erro)}.cap.erro .titulo{color:var(--erro)}
+.cap p{margin:.2rem 0}
+.vazio{color:var(--suave);padding:1.05rem;background:#fff;border:1px dashed var(--linha);border-radius:.6rem}
+footer{padding:0 1.2rem 1.8rem;color:var(--suave);font-size:.85rem}
+@media (max-width:620px) and (hover:none),(max-width:620px) and (pointer:coarse){.etq{grid-template-columns:1fr}.etq .canhoto{border-left:0;border-top:2px dashed var(--linha);flex-direction:row;flex-wrap:wrap;align-items:center;padding-left:1.05rem}.etq .canhoto::before{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div><h1>Gerenciador de Produtos</h1><p>Produtos vigiados pelo robô de preços nas lojas americanas.</p></div>
+  <div class="selo" aria-label="Versão do Gerenciador">v3.0 · 13-out-26<br>09:00 pm</div>
+</div></header>
+<main class="wrap">
+
+<section id="secCap" hidden>
+  <div class="painel cap" id="caixaCap" role="status" aria-live="polite"><p class="titulo" id="capTitulo"></p><p id="capTexto"></p></div>
+</section>
+
+<section id="secToken" hidden>
+  <h2>Conectar ao robô</h2>
+  <div class="painel">
+    <p>Cole o token de acesso do GitHub. Ele fica guardado só neste navegador e dá acesso apenas ao repositório <b>robo-de-precos</b>. Você só faz isso uma vez por aparelho.</p>
+    <label for="token">Token de acesso</label>
+    <input id="token" type="password" autocomplete="off" placeholder="github_pat_...">
+    <div class="acoes"><button class="principal" id="btnToken">Conectar</button></div>
+    <div id="msgToken"></div>
+  </div>
+</section>
+
+<section id="secNovo" hidden>
+  <h2 id="tituloForm">Novo produto</h2>
+  <form id="form" novalidate>
+    <div class="faixa"><span>Capturou um produto na loja? Cole aqui com <b>Cmd+V</b> (ou toque no botão) e o formulário se preenche sozinho.</span><button type="button" class="realce" id="btnColar">Colar captura</button></div>
+    <div class="grade">
+      <div class="largo"><label for="url">Endereço da página (URL)</label><input id="url" type="url" inputmode="url" placeholder="https://www.loja.com/produto...">
+        <div class="dica" id="dicaLoja">Página de um produto (específico) ou de uma categoria/busca da loja (genérico).</div></div>
+      <div><label for="tipo">Tipo de vigilância</label>
+        <select id="tipo"><option value="especifico">Específico</option><option value="generico">Genérico (listagem)</option></select></div>
+      <div class="largo"><label for="produto">Produto (nome para você reconhecer)</label><input id="produto" placeholder="Ex.: Polo L.12.12 3XL - Macy's"></div>
+      <div><label for="marca">Marca</label><input id="marca" list="listaMarcas" placeholder="Ex.: Lacoste"><datalist id="listaMarcas"></datalist>
+        <div class="dica" id="dicaMarca">Ao escolher uma marca já usada, gênero, tamanho e desconto vêm preenchidos.</div></div>
+      <div><label for="genero">Gênero</label>
+        <select id="genero"><option value="masculino">Masculino</option><option value="feminino">Feminino</option><option value="unissex">Unissex</option></select></div>
+      <div><label for="tamanho">Tamanho</label><input id="tamanho" list="listaTamanhos" placeholder="11, 3XL, 34x32 ou vazio"><datalist id="listaTamanhos"></datalist></div>
+      <div><label for="ref">Preço de referência (US$)</label><input id="ref" type="number" min="1" step="0.01" inputmode="decimal"></div>
+      <div><label for="desc">Desconto para alertar (%)</label><input id="desc" type="number" min="1" max="90" step="1" inputmode="numeric" list="listaDesc" value="30"><datalist id="listaDesc"><option value="15"><option value="20"><option value="25"><option value="30"><option value="40"><option value="50"><option value="60"></datalist></div>
+      <div id="caixaFiltro" hidden><label for="filtro">Palavras obrigatórias no nome</label><input id="filtro" placeholder="Ex.: mexico 66 deluxe">
+        <div class="dica">Só itens da listagem cujo nome contenha todas estas palavras.</div></div>
+    </div>
+    <div class="previa" id="previa">Preencha endereço, nome e preço de referência para ver o resumo.</div>
+    <div class="acoes"><button class="principal" id="btnSalvar" type="submit" disabled>Salvar no robô</button><button class="secundario" type="reset">Limpar</button></div>
+    <div id="msg" role="status"></div>
+  </form>
+</section>
+
+<section id="secLista" hidden>
+  <h2>Produtos vigiados</h2>
+  <div class="filtro"><input id="busca" type="search" placeholder="Filtrar por nome, marca ou loja"><span id="contagem"></span></div>
+  <div id="lista"></div>
+</section>
+</main>
+<footer class="wrap"><button class="secundario" id="btnAtualizar">Atualizar dados</button> <button class="secundario" id="btnEsquecer">Desconectar este navegador</button></footer>
+
+<script>
+const REPO = "d6t29ggrmy-del/robo-de-precos", RAMO = "main", ARQ = "produtos.csv";
+const CAMPOS = ["tipo","produto","marca","genero","tamanho","preco_referencia","variacao","filtro","url","seletor_css"];
+const PISO = 0.30; // robô ignora preços abaixo de 30% da referência (proteção contra banner)
+const $ = s => document.querySelector(s);
+let produtos = [], shaCsv = null, leituras = {}, aberto = null, preenchidoPorMarca = false;
+
+// ---------- token local ----------
+const tokenGet = () => { try { return localStorage.getItem("gp_token") || ""; } catch(e) { return ""; } };
+const tokenSet = t => { try { t ? localStorage.setItem("gp_token", t) : localStorage.removeItem("gp_token"); } catch(e) {} };
+
+// ---------- GitHub ----------
+function b64decode(s){ const bin = atob(s.replace(/\n/g,"")); return new TextDecoder().decode(Uint8Array.from(bin, c => c.charCodeAt(0))); }
+function b64encode(t){ const bytes = new TextEncoder().encode(t); let bin = ""; bytes.forEach(b => bin += String.fromCharCode(b)); return btoa(bin); }
+async function gh(caminho, opcoes = {}){
+  const r = await fetch("https://api.github.com/repos/" + REPO + "/contents/" + caminho + (opcoes.method ? "" : "?ref=" + RAMO + "&t=" + Date.now()), {
+    cache: "no-store", ...opcoes,
+    headers: { "Authorization": "Bearer " + tokenGet(), "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" }
+  });
+  if (r.status === 401 || r.status === 403) throw new Error("TOKEN");
+  if (r.status === 404) throw new Error("404");
+  if (r.status === 409 || r.status === 422) throw new Error("CONFLITO");
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  return r.json();
+}
+async function lerArquivo(caminho){ const j = await gh(caminho); return { texto: j.content ? b64decode(j.content) : "", sha: j.sha }; }
+
+// ---------- CSV (ponto e vírgula, 10 colunas) ----------
+function parseCsv(txt){
+  const linhas = txt.split(/\r?\n/).filter(l => l.trim());
+  if (!linhas.length) return [];
+  const cab = linhas.shift().split(";").map(s => s.trim());
+  return linhas.map(l => { const v = l.split(";"); const o = {}; cab.forEach((c,i) => o[c] = (v[i] || "").trim()); return o; })
+               .filter(o => o.produto && /^https?:\/\//.test(o.url));
+}
+const montarCsv = lista => CAMPOS.join(";") + "\n" + lista.map(p => CAMPOS.map(c => p[c] ?? "").join(";")).join("\n") + "\n";
+async function gravarCsv(lista, mensagem){
+  await gh(ARQ, { method: "PUT", body: JSON.stringify({ message: "Gerenciador: " + mensagem, content: b64encode(montarCsv(lista)), sha: shaCsv, branch: RAMO }) });
+}
+
+// ---------- última leitura do robô (historico_precos.txt) ----------
+function lerHistorico(txt){
+  const r = {};
+  txt.split(/\r?\n/).forEach(l => {
+    let m = /^\[(.+?)\] .* — USD ([\d.]+) \(referência: .*\) — (\S+)\s*$/.exec(l);
+    if (m) { r[m[3]] = { ok: true, quando: m[1], preco: +m[2] }; return; }
+    m = /^\[(.+?)\] .* — FALHA: (.+) \((https?:\/\/\S+)\)\s*$/.exec(l);
+    if (m) { r[m[3]] = { ok: false, quando: m[1], motivo: m[2] }; }
+  });
+  return r;
+}
+
+// ---------- utilidades ----------
+const num = v => parseFloat(String(v ?? "").replace(",", "."));
+const pctDe = v => { let x = num(v); if (!(x > 0)) return 0; return x > 1 ? x : x * 100; };
+const usd = v => "US$ " + (+v).toFixed(2);
+const loja = u => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch(e) { return ""; } };
+const semPV = s => String(s || "").replace(/;/g, ",").replace(/[\r\n\t]+/g, " ").trim();
+const esc = s => String(s ?? "").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+const chave = p => [p.url, (p.filtro || "").toLowerCase(), (p.tamanho || "").toLowerCase()].join("|");
+
+// ---------- leitura e validação de campos (formulário do topo ou editor do cartão) ----------
+// "pega(nome)" devolve o elemento do campo; serve para os dois lugares
+function lerCampos(pega){
+  const tipo = pega("tipo").value, caixaF = pega("filtro").closest("[hidden]");
+  return { tipo, url: pega("url").value.trim(), produto: semPV(pega("produto").value), marca: semPV(pega("marca").value),
+           genero: pega("genero").value, tamanho: semPV(pega("tamanho").value), ref: num(pega("ref").value), desc: num(pega("desc").value),
+           filtro: (tipo === "generico" || !caixaF) ? semPV(pega("filtro").value).toLowerCase() : "" };
+}
+function validar(f, excluir){
+  const erros = [], avisos = [];
+  if (!/^https?:\/\/[^\s]+\.[^\s]+/.test(f.url)) erros.push("O endereço precisa começar com https:// e ser de uma página da loja.");
+  if (!f.produto) erros.push("Dê um nome ao produto.");
+  if (!(f.ref > 0)) erros.push("Informe o preço de referência em dólares.");
+  if (!(f.desc >= 1 && f.desc <= 90)) erros.push("O desconto deve ficar entre 1% e 90%.");
+  if (f.url.includes(";")) erros.push("O endereço não pode conter ponto e vírgula.");
+  const outros = produtos.filter((p, i) => i !== excluir);
+  const nova = { url: f.url, filtro: f.filtro, tamanho: f.tamanho };
+  if (outros.some(p => chave(p) === chave(nova))) erros.push("Este endereço já está sendo vigiado com o mesmo filtro e tamanho.");
+  else if (f.url && outros.some(p => p.url === f.url)) avisos.push("Este endereço já aparece em outra linha (com outro filtro ou tamanho).");
+  if (/rakuten\.com/i.test(f.url)) avisos.push("A Rakuten mostra os preços só via programação: o robô não consegue lê-los.");
+  if (f.tipo === "especifico" && /\/(search|s|collections|category|c)\b|[?&](q|k|query)=/i.test(f.url)) avisos.push("Parece uma página de busca ou categoria: talvez o tipo certo seja Genérico.");
+  return { erros, avisos };
+}
+function textoPrevia(f, erros, avisos){
+  let h = "";
+  if (f.ref > 0 && f.desc > 0) {
+    h += "Alerta quando o preço for <b>≤ " + usd(f.ref * (1 - f.desc / 100)) + "</b> (" + f.desc + "% abaixo de " + usd(f.ref) + ").";
+    h += "<br>Preços abaixo de " + usd(f.ref * PISO) + " são ignorados pelo robô (proteção contra banners e amostras).";
+  }
+  if (f.tamanho) h += "<br>Tamanho " + esc(f.tamanho) + ": o alerta informa se o robô conseguiu confirmá-lo na página.";
+  if (f.tipo === "generico") h += "<br>Genérico: qualquer item da listagem" + (f.filtro ? " com “" + esc(f.filtro) + "” no nome" : "") + (f.genero !== "unissex" ? ", do gênero " + f.genero : "") + ".";
+  if (avisos.length) h += '<br><span class="aviso">' + avisos.join(" ") + "</span>";
+  if (erros.length) h += (h ? "<br>" : "") + '<span class="erro">' + erros[0] + "</span>";
+  return h;
+}
+const linhaDe = (f, seletor) => ({ tipo: f.tipo, produto: f.produto, marca: f.marca, genero: f.genero, tamanho: f.tamanho,
+  preco_referencia: String(+f.ref.toFixed(2)), variacao: (f.desc / 100).toFixed(2), filtro: f.filtro, url: f.url, seletor_css: seletor || "" });
+
+// ---------- formulário do topo (somente produto novo) ----------
+const campoTopo = n => $("#" + n);
+function atualizarPrevia(){
+  const f = lerCampos(campoTopo), { erros, avisos } = validar(f, null), p = $("#previa");
+  $("#caixaFiltro").hidden = f.tipo !== "generico";
+  $("#dicaLoja").textContent = loja(f.url) ? "Loja: " + loja(f.url) : "Página de um produto (específico) ou de uma categoria/busca da loja (genérico).";
+  $("#btnSalvar").disabled = !!erros.length;
+  if (!f.url && !f.produto && !(f.ref > 0)) { p.innerHTML = "Preencha endereço, nome e preço de referência para ver o resumo."; return; }
+  p.innerHTML = textoPrevia(f, erros, avisos);
+}
+function preencherTopo(p){
+  $("#tipo").value = p.tipo === "generico" ? "generico" : "especifico";
+  $("#url").value = p.url || ""; $("#produto").value = p.produto || ""; $("#marca").value = p.marca || "";
+  $("#genero").value = ["masculino","feminino","unissex"].includes(p.genero) ? p.genero : "unissex";
+  $("#tamanho").value = p.tamanho || ""; $("#ref").value = num(p.preco_referencia) > 0 ? num(p.preco_referencia) : "";
+  $("#desc").value = pctDe(p.variacao) ? Math.round(pctDe(p.variacao)) : 30; $("#filtro").value = p.filtro || "";
+  if (p.marca) aplicarMemoriaMarca(true);
+  atualizarPrevia();
+}
+// memória por marca: copia gênero, tamanho e desconto do produto mais recente da mesma marca
+function aplicarMemoriaMarca(soVazios){
+  const m = $("#marca").value.trim().toLowerCase(); if (!m) return;
+  const ref = [...produtos].reverse().find(p => (p.marca || "").toLowerCase() === m); if (!ref) return;
+  if (!soVazios || !preenchidoPorMarca) $("#genero").value = ref.genero || $("#genero").value;
+  if (!soVazios || !$("#tamanho").value) $("#tamanho").value = ref.tamanho || "";
+  if (!soVazios || !$("#desc").value || $("#desc").value === "30") $("#desc").value = Math.round(pctDe(ref.variacao)) || 30;
+  preenchidoPorMarca = true;
+  $("#dicaMarca").innerHTML = '<span class="certo">Gênero, tamanho e desconto copiados do último produto ' + esc(ref.marca) + ".</span> Ajuste se precisar.";
+}
+function limparTopo(){ preenchidoPorMarca = false; $("#dicaMarca").textContent = "Ao escolher uma marca já usada, gênero, tamanho e desconto vêm preenchidos."; }
+
+// ---------- captura (linha gerada pelo botão Capturar Produto) ----------
+function ehCaptura(t){ return /^(especifico|generico);/.test((t || "").trim()) && (t.match(/;/g) || []).length >= 8; }
+function importarCaptura(t){
+  const v = t.trim().split(";"), o = {}; CAMPOS.forEach((c,i) => o[c] = (v[i] || "").trim());
+  $("#form").reset(); limparTopo(); preencherTopo(o);
+  $("#secNovo").scrollIntoView({ behavior: "smooth" });
+  toast("Captura importada. Confira nome e preço, ajuste o desconto e salve.", "certo");
+  setTimeout(() => (o.marca ? $("#ref") : $("#marca")).focus(), 300);
+}
+
+// ---------- captura de um clique (chega pelo endereço: ...#cap=<linha>) ----------
+function lerCapturaDaUrl(){
+  const m = /[#&]cap=([^&]+)/.exec(location.hash); if (!m) return null;
+  let t = ""; try { t = decodeURIComponent(m[1]); } catch(e) { return null; }
+  const volta = /[#&]volta=1/.test(location.hash), om = /[#&]origem=(\w+)/.exec(location.hash), origem = om ? om[1] : "texto";
+  history.replaceState(null, "", location.pathname + location.search); // limpa o endereço: recarregar não grava de novo
+  return ehCaptura(t) ? { t, volta, origem } : null;
+}
+function guardarCaptura(c){ try { sessionStorage.setItem("gp_cap", JSON.stringify(c)); } catch(e) { capMemoria = c; } }
+let capMemoria = null;
+function pegarCaptura(){ let c = capMemoria; capMemoria = null; try { const s = sessionStorage.getItem("gp_cap"); if (s) { sessionStorage.removeItem("gp_cap"); c = JSON.parse(s); } } catch(e) {} return c; }
+function mostrarCap(titulo, texto, cls){
+  $("#secCap").hidden = false; $("#caixaCap").className = "painel cap " + (cls || "");
+  $("#capTitulo").textContent = titulo; $("#capTexto").innerHTML = texto || ""; window.scrollTo(0, 0);
+}
+function fecharDepois(c){
+  setTimeout(() => {
+    if (c.volta) { if (history.length > 1) history.back(); return; }
+    window.close(); // só fecha abas abertas pelo botão; se não fechar, a mensagem fica na tela
+  }, 2500);
+}
+async function processarCaptura(){
+  const c = pegarCaptura(); if (!c) return;
+  const v = c.t.trim().split(";"), o = {}; CAMPOS.forEach((k,i) => o[k] = (v[i] || "").trim());
+  const marca = semPV(o.marca), memo = marca ? [...produtos].reverse().find(p => (p.marca || "").toLowerCase() === marca.toLowerCase()) : null;
+  const f = { tipo: "especifico", url: o.url, produto: semPV(o.produto), marca, genero: memo ? memo.genero : "unissex",
+              tamanho: memo ? (memo.tamanho || "") : "", ref: num(o.preco_referencia), desc: memo ? (Math.round(pctDe(memo.variacao)) || 30) : 30, filtro: "" };
+  const completar = motivo => {
+    preencherTopo({ ...o, genero: f.genero, tamanho: f.tamanho, variacao: String(f.desc / 100) });
+    mostrarCap("Falta um detalhe para salvar", esc(motivo) + "<br>O formulário <b>Novo produto</b> abaixo já está preenchido: complete e clique em <b>Salvar no robô</b>.", "");
+  };
+  const nova = { url: f.url, filtro: "", tamanho: f.tamanho };
+  if (produtos.some(p => chave(p) === chave(nova))) { mostrarCap("Este produto já está na sua lista", esc(f.produto) + " já é vigiado pelo robô. Nada foi alterado.", "certo"); fecharDepois(c); return; }
+  if (!(f.ref > 0)) return completar("O botão não encontrou o preço na página da loja. Informe o preço de referência.");
+  if (c.origem !== "dados" && c.origem !== "selecao") return completar("A loja não publica o preço de forma organizada, então ele foi lido do texto da página (" + usd(f.ref) + ") e pode ser de outro item ou de um banner. Confira o preço de referência. Dica: selecione o preço na página antes de clicar no botão e ele grava sozinho.");
+  if (/rakuten\.com/i.test(f.url)) return completar("A Rakuten mostra os preços só via programação: o robô não consegue lê-los. Confira antes de salvar.");
+  const { erros } = validar(f, null); if (erros.length) return completar(erros[0]);
+  mostrarCap("Enviando para o robô…", esc(f.produto), "");
+  for (let tentativa = 1; tentativa <= 2; tentativa++) {
+    try {
+      await carregar(true);
+      if (produtos.some(p => chave(p) === chave(nova))) { mostrarCap("Este produto já está na sua lista", esc(f.produto) + " já é vigiado pelo robô. Nada foi alterado.", "certo"); await carregar(); fecharDepois(c); return; }
+      await gravarCsv(produtos.concat([linhaDe(f, "")]), "captura " + f.produto);
+      await carregar();
+      const gat = f.ref * (1 - f.desc / 100);
+      mostrarCap("Salvo no robô ✓", "<b>" + esc(f.produto) + "</b><br>Alerta quando o preço for ≤ <b>" + usd(gat) + "</b> (" + f.desc + "% abaixo de " + usd(f.ref) + ")." +
+        (memo ? "<br>Gênero, tamanho e desconto copiados do último produto " + esc(memo.marca) + "." : "<br>Marca nova: desconto padrão de 30%. Se quiser outro, use Editar no cartão.") +
+        (c.volta ? "<br>Voltando para a loja…" : "<br>Esta aba fecha sozinha."), "certo");
+      fecharDepois(c); return;
+    } catch(e) {
+      if (e.message === "CONFLITO" && tentativa === 1) continue; // o robô gravou ao mesmo tempo: tenta mais uma vez
+      if (e.message === "TOKEN") { guardarCaptura(c); tratarErro(e); mostrarCap("Conecte o Gerenciador para salvar", "Cole o token abaixo: o produto capturado é salvo logo depois.", "erro"); return; }
+      mostrarCap("Não foi possível salvar", "Falha de comunicação com o GitHub (" + esc(e.message) + "). Clique de novo no botão Capturar Produto daqui a pouco.", "erro"); return;
+    }
+  }
+}
+
+// ---------- editor dentro do cartão ----------
+function htmlEditor(p){
+  const op = (v, t, s) => '<option value="' + v + '"' + (s ? " selected" : "") + ">" + t + "</option>";
+  const g = ["masculino","feminino","unissex"].includes(p.genero) ? p.genero : "unissex";
+  return '<div class="editor"><h3>Editar este produto</h3><div class="grade">' +
+    '<div class="largo"><label>Endereço da página (URL)</label><input data-c="url" type="url" value="' + esc(p.url) + '"></div>' +
+    '<div><label>Tipo de vigilância</label><select data-c="tipo">' + op("especifico","Específico", p.tipo !== "generico") + op("generico","Genérico (listagem)", p.tipo === "generico") + "</select></div>" +
+    '<div class="largo"><label>Produto</label><input data-c="produto" value="' + esc(p.produto) + '"></div>' +
+    '<div><label>Marca</label><input data-c="marca" list="listaMarcas" value="' + esc(p.marca) + '"></div>' +
+    '<div><label>Gênero</label><select data-c="genero">' + op("masculino","Masculino", g === "masculino") + op("feminino","Feminino", g === "feminino") + op("unissex","Unissex", g === "unissex") + "</select></div>" +
+    '<div><label>Tamanho</label><input data-c="tamanho" list="listaTamanhos" value="' + esc(p.tamanho) + '"></div>' +
+    '<div><label>Preço de referência (US$)</label><input data-c="ref" type="number" min="1" step="0.01" inputmode="decimal" value="' + (num(p.preco_referencia) || "") + '"></div>' +
+    '<div><label>Desconto para alertar (%)</label><input data-c="desc" type="number" min="1" max="90" step="1" inputmode="numeric" list="listaDesc" value="' + (Math.round(pctDe(p.variacao)) || 30) + '"></div>' +
+    '<div data-caixa="filtro"' + (p.tipo === "generico" || p.filtro ? "" : " hidden") + '><label>Palavras obrigatórias no nome</label><input data-c="filtro" value="' + esc(p.filtro) + '"></div>' +
+    '</div><div class="previa"></div>' +
+    '<div class="acoes"><button type="button" class="principal" data-ed="salvar">Salvar alterações</button><button type="button" class="secundario" data-ed="cancelar">Cancelar</button></div>' +
+    '<div class="msgEd" role="status"></div></div>';
+}
+function fecharEditor(){
+  const ed = document.querySelector(".etq .editor"); aberto = null; if (!ed) return;
+  const el = ed.closest(".etq"); ed.remove(); el.classList.remove("aberta");
+  const b = el.querySelector('[data-a="editar"]'); if (b) b.disabled = false;
+  manterVisivel(el);
+}
+// se o cartão saiu da tela (o editor que sumiu era alto), volta a tela até ele
+function manterVisivel(el){
+  const r = el.getBoundingClientRect(), m = 12;
+  if (r.top < 0 || r.top > innerHeight - 60) window.scrollBy(0, r.top - m);
+}
+function abrirEditor(el, p, i, semRolar){
+  fecharEditor();
+  aberto = chave(p); el.classList.add("aberta");
+  el.querySelector('[data-a="editar"]').disabled = true;
+  el.insertAdjacentHTML("beforeend", htmlEditor(p));
+  montarEditor(el, i, semRolar);
+}
+function montarEditor(el, i, semRolar){
+  const ed = el.querySelector(".editor"), pega = n => ed.querySelector('[data-c="' + n + '"]');
+  const prev = ed.querySelector(".previa"), btn = ed.querySelector('[data-ed="salvar"]'), temFiltro = !!(produtos[i] && produtos[i].filtro);
+  const atualizar = () => {
+    const f = lerCampos(pega), { erros, avisos } = validar(f, i);
+    ed.querySelector('[data-caixa="filtro"]').hidden = f.tipo !== "generico" && !temFiltro;
+    prev.innerHTML = textoPrevia(f, erros, avisos); btn.disabled = !!erros.length;
+  };
+  ed.addEventListener("input", atualizar); ed.addEventListener("change", atualizar); atualizar();
+  ed.querySelector('[data-ed="cancelar"]').onclick = fecharEditor;
+  btn.onclick = () => salvarEdicao(i, lerCampos(pega), btn, ed.querySelector(".msgEd"));
+  ed.addEventListener("keydown", e => { if (e.key === "Enter" && e.target.tagName === "INPUT" && !btn.disabled) { e.preventDefault(); btn.click(); } if (e.key === "Escape") fecharEditor(); });
+  // foca o desconto sem deixar o navegador rolar sozinho; depois garante o editor visível, rolando só o necessário
+  pega("desc").focus({ preventScroll: true }); pega("desc").select();
+  if (!semRolar) requestAnimationFrame(() => {
+    const r = ed.getBoundingClientRect(), margem = 12;
+    if (r.bottom > innerHeight) window.scrollBy(0, Math.min(r.bottom - innerHeight + margem, el.getBoundingClientRect().top - margem));
+  });
+}
+
+// ---------- lista ----------
+function desenharLista(){
+  const termo = $("#busca").value.trim().toLowerCase(), L = $("#lista");
+  const itens = produtos.map((p, i) => ({ p, i })).filter(({ p }) => !termo || [p.produto, p.marca, loja(p.url)].join(" ").toLowerCase().includes(termo));
+  $("#contagem").textContent = itens.length + " de " + produtos.length + " linhas";
+  if (!produtos.length) { L.innerHTML = '<div class="vazio">Nenhum produto vigiado. Preencha o formulário acima ou cole uma captura.</div>'; return; }
+  if (!itens.length) { L.innerHTML = '<div class="vazio">Nada encontrado para “' + esc(termo) + '”.</div>'; return; }
+  const y = window.scrollY;
+  L.style.minHeight = L.offsetHeight + "px"; // segura a altura enquanto troca o conteúdo
+  L.innerHTML = "";
+  itens.forEach(({ p, i }) => {
+    const ref = num(p.preco_referencia), pct = pctDe(p.variacao), gat = ref * (1 - pct / 100), lt = leituras[p.url];
+    const estaAberto = aberto === chave(p);
+    let leitura = "";
+    if (p.tipo !== "generico" && lt) leitura = lt.ok
+      ? '<div class="leitura">Última leitura: <b>' + usd(lt.preco) + "</b> em " + esc(lt.quando) + (lt.preco <= gat ? ' <span class="certo">· abaixo do gatilho</span>' : "") + "</div>"
+      : '<div class="leitura aviso">Última leitura falhou (' + esc(lt.quando) + "): " + esc(lt.motivo) + "</div>";
+    const el = document.createElement("div"); el.className = "etq" + (estaAberto ? " aberta" : "");
+    el.innerHTML = '<div class="corpo"><div class="nome"><span class="tipo ' + (p.tipo === "generico" ? "g" : "e") + '">' + (p.tipo === "generico" ? "Genérico" : "Específico") + "</span>" + esc(p.produto) + "</div>" +
+      '<div class="meta">' + [p.marca, p.genero, p.tamanho ? "tam " + p.tamanho : "", p.filtro ? "filtro: " + p.filtro : ""].filter(Boolean).map(esc).join(" · ") + "</div>" +
+      '<div class="meta"><a href="' + esc(p.url) + '" target="_blank" rel="noopener">' + esc(loja(p.url)) + " ↗</a></div>" + leitura + "</div>" +
+      '<div class="canhoto"><div class="gatilho">≤ ' + usd(gat) + "<small>" + Math.round(pct) + "% abaixo de " + usd(ref) + "</small></div>" +
+      '<div class="btns"><button class="secundario" data-a="editar"' + (estaAberto ? " disabled" : "") + '>Editar</button><button class="perigo" data-a="remover">Remover</button></div></div>' +
+      "";
+    el.querySelector('[data-a="editar"]').onclick = () => abrirEditor(el, p, i);
+    el.querySelector('[data-a="remover"]').onclick = () => remover(i);
+    L.appendChild(el);
+    if (estaAberto) abrirEditor(el, p, i, true);
+  });
+  L.style.minHeight = ""; window.scrollTo(0, y);
+}
+function atualizarSugestoes(){
+  const uniq = arr => [...new Set(arr.filter(Boolean))].sort((a,b) => a.localeCompare(b));
+  $("#listaMarcas").innerHTML = uniq(produtos.map(p => p.marca)).map(m => '<option value="' + esc(m) + '">').join("");
+  $("#listaTamanhos").innerHTML = uniq(produtos.map(p => p.tamanho)).map(t => '<option value="' + esc(t) + '">').join("");
+}
+
+// ---------- gravação (sempre relê a versão atual antes de gravar: sem erro 422) ----------
+async function salvar(){
+  const btn = $("#btnSalvar"), f = lerCampos(campoTopo);
+  btn.disabled = true; btn.textContent = "Salvando…";
+  try {
+    await carregar(true);
+    const { erros } = validar(f, null); if (erros.length) { toast(erros.join(" "), "erro"); return; }
+    await gravarCsv(produtos.concat([linhaDe(f, "")]), "novo produto " + f.produto);
+    $("#form").reset(); limparTopo(); await carregar();
+    toast("Produto salvo. O robô usa a tabela nova na próxima rodada.", "certo");
+  } catch(e) { tratarErro(e); }
+  finally { btn.textContent = "Salvar no robô"; atualizarPrevia(); }
+}
+async function salvarEdicao(iAntigo, f, btn, msg){
+  const alvo = aberto, nome = produtos[iAntigo] ? produtos[iAntigo].produto : f.produto;
+  btn.disabled = true; btn.textContent = "Salvando…"; msg.innerHTML = "";
+  try {
+    await carregar(true);
+    const i = produtos.findIndex(p => chave(p) === alvo);
+    if (i < 0) { aberto = null; await carregar(); toast("Este produto foi alterado ou removido em outro lugar. Os dados foram recarregados.", "aviso"); return; }
+    const { erros } = validar(f, i);
+    if (erros.length) { msg.innerHTML = '<span class="erro">' + erros.join(" ") + "</span>"; btn.disabled = false; btn.textContent = "Salvar alterações"; return; }
+    const nova = produtos.slice(); nova[i] = linhaDe(f, produtos[i].seletor_css);
+    await gravarCsv(nova, "editar " + nome);
+    aberto = null; await carregar();
+    const el = [...document.querySelectorAll(".etq")].find(e => e.querySelector(".nome") && e.querySelector(".nome").textContent.includes(f.produto));
+    if (el) { manterVisivel(el); el.classList.add("aberta"); el.insertAdjacentHTML("beforeend", '<div class="editor"><span class="certo">Alterações salvas. O robô usa a tabela nova na próxima rodada.</span></div>');
+              setTimeout(() => { el.classList.remove("aberta"); const n = el.querySelector(".editor"); if (n) n.remove(); }, 4000); }
+  } catch(e) {
+    if (e.message === "CONFLITO") { msg.innerHTML = '<span class="aviso">O robô gravou a tabela enquanto você salvava. Toque em salvar de novo.</span>'; btn.disabled = false; btn.textContent = "Salvar alterações"; return; }
+    tratarErro(e); btn.disabled = false; btn.textContent = "Salvar alterações";
+  }
+}
+async function remover(i){
+  const p = produtos[i], alvo = chave(p);
+  if (!confirm("Remover “" + p.produto + "” da vigilância?")) return;
+  try {
+    await carregar(true);
+    const j = produtos.findIndex(x => chave(x) === alvo);
+    if (j < 0) { toast("Este produto já não estava na tabela. Dados recarregados.", "aviso"); await carregar(); return; }
+    await gravarCsv(produtos.filter((_, k) => k !== j), "remover " + p.produto);
+    if (aberto === alvo) aberto = null;
+    await carregar();
+    toast("Produto removido.", "certo");
+  } catch(e) { tratarErro(e); }
+}
+
+// ---------- carregamento ----------
+async function carregar(silencioso){
+  const csv = await lerArquivo(ARQ);
+  produtos = parseCsv(csv.texto); shaCsv = csv.sha;
+  if (silencioso) return;
+  try { leituras = lerHistorico((await lerArquivo("historico_precos.txt")).texto); }
+  catch(e) { if (e.message === "TOKEN") throw e; leituras = {}; }
+  atualizarSugestoes(); desenharLista(); atualizarPrevia();
+}
+function toast(t, cls = "certo"){ $("#msg").innerHTML = '<span class="' + cls + '">' + t + "</span>"; }
+function tratarErro(e){
+  if (e.message === "TOKEN") { mostrar(false); $("#msgToken").innerHTML = '<p class="erro">O token foi recusado ou expirou. Gere um novo no GitHub e cole acima.</p>'; return; }
+  if (e.message === "CONFLITO") { toast("O robô gravou a tabela enquanto você salvava. Os dados foram recarregados: toque em salvar de novo.", "aviso"); carregar().catch(() => {}); return; }
+  if (e.message === "404") { toast("Não encontrei o produtos.csv no repositório robo-de-precos.", "erro"); return; }
+  toast("Falha de comunicação com o GitHub (" + e.message + "). Verifique a internet e tente de novo.", "erro");
+}
+function mostrar(conectado){ $("#secToken").hidden = conectado; $("#secNovo").hidden = !conectado; $("#secLista").hidden = !conectado; }
+
+// ---------- eventos ----------
+$("#form").addEventListener("input", e => { if (e.target.id === "marca") preenchidoPorMarca = false; atualizarPrevia(); });
+$("#marca").addEventListener("change", () => aplicarMemoriaMarca(false));
+$("#form").addEventListener("submit", ev => { ev.preventDefault(); salvar(); });
+$("#form").addEventListener("reset", () => setTimeout(() => { limparTopo(); atualizarPrevia(); }));
+$("#busca").addEventListener("input", desenharLista);
+document.addEventListener("paste", e => {
+  if (e.target.closest && e.target.closest(".editor")) return;
+  const t = (e.clipboardData || window.clipboardData).getData("text");
+  if (ehCaptura(t)) { e.preventDefault(); importarCaptura(t); }
+});
+$("#btnColar").onclick = async () => {
+  try { const t = await navigator.clipboard.readText();
+        if (ehCaptura(t)) importarCaptura(t); else toast("A área de transferência não tem uma captura. Use o botão Capturar Produto na página da loja.", "aviso"); }
+  catch(e) { toast("O navegador não deixou ler a área de transferência. Clique em qualquer lugar da página e use Cmd+V.", "aviso"); }
+};
+$("#btnToken").onclick = async () => {
+  const t = $("#token").value.trim(); if (!t) return;
+  tokenSet(t); $("#msgToken").textContent = "Conectando…";
+  try { mostrar(true); await carregar(); $("#token").value = ""; $("#msgToken").textContent = ""; await processarCaptura(); }
+  catch(e) { tokenSet(""); tratarErro(e); }
+};
+$("#btnAtualizar").onclick = () => carregar().then(() => toast("Dados atualizados.")).catch(tratarErro);
+$("#btnEsquecer").onclick = () => { if (confirm("Remover o token deste navegador?")) { tokenSet(""); location.reload(); } };
+
+(async () => {
+  const cap = lerCapturaDaUrl(); if (cap) guardarCaptura(cap);
+  if (!tokenGet()) { mostrar(false); if (cap) mostrarCap("Conecte o Gerenciador para salvar", "Cole o token abaixo uma vez neste aparelho: o produto capturado é salvo logo depois.", ""); return; }
+  mostrar(true);
+  try { await carregar(); await processarCaptura(); } catch(e) { tratarErro(e); }
+})();
+</script>
+</body>
+</html>
