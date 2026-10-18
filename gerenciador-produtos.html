@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<!-- Gerenciador de Produtos | v3.2 | 14/10/2026 01:14 pm | última alteração: botões Atualizar dados e Desconectar este navegador movidos do rodapé para o cabeçalho -->
+<!-- Gerenciador de Produtos | v3.3 | 18/10/2026 03:18 pm | última alteração: projeto renomeado para Bot Preços; repositório do robô agora é bot-precos -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
 <title>Gerenciador de Produtos</title>
@@ -89,7 +89,7 @@ footer{padding:0 1.2rem 1.8rem;color:var(--suave);font-size:.85rem}
 <body>
 <header><div class="wrap">
   <div><h1>Gerenciador de Produtos</h1><p>Produtos vigiados pelo robô de preços nas lojas americanas.</p></div>
-  <div class="topo-dir"><button class="btn-topo" id="btnAtualizar">Atualizar dados</button><button class="btn-topo" id="btnEsquecer">Desconectar este navegador</button><div class="selo" aria-label="Versão do Gerenciador">v3.2 · 14-out-26<br>01:14 pm</div></div>
+  <div class="topo-dir"><button class="btn-topo" id="btnAtualizar">Atualizar dados</button><button class="btn-topo" id="btnEsquecer">Desconectar este navegador</button><div class="selo" aria-label="Versão do Gerenciador">v3.3 · 18-out-26<br>03:18 pm</div></div>
 </div></header>
 <main class="wrap">
 
@@ -100,7 +100,7 @@ footer{padding:0 1.2rem 1.8rem;color:var(--suave);font-size:.85rem}
 <section id="secToken" hidden>
   <h2>Conectar ao robô</h2>
   <div class="painel">
-    <p>Cole o token de acesso do GitHub. Ele fica guardado só neste navegador e dá acesso apenas ao repositório <b>robo-de-precos</b>. Você só faz isso uma vez por aparelho.</p>
+    <p>Cole o token de acesso do GitHub. Ele fica guardado só neste navegador e dá acesso apenas ao repositório <b>bot-precos</b>. Você só faz isso uma vez por aparelho.</p>
     <label for="token">Token de acesso</label>
     <input id="token" type="password" autocomplete="off" placeholder="github_pat_...">
     <div class="acoes"><button class="principal" id="btnToken">Conectar</button></div>
@@ -142,7 +142,7 @@ footer{padding:0 1.2rem 1.8rem;color:var(--suave);font-size:.85rem}
 </main>
 
 <script>
-const REPO = "d6t29ggrmy-del/robo-de-precos", RAMO = "main", ARQ = "produtos.csv";
+const REPO = "d6t29ggrmy-del/bot-precos", RAMO = "main", ARQ = "produtos.csv";
 const CAMPOS = ["tipo","produto","marca","genero","tamanho","preco_referencia","variacao","filtro","url","seletor_css"];
 const PISO = 0.30; // robô ignora preços abaixo de 30% da referência (proteção contra banner)
 const $ = s => document.querySelector(s);
@@ -517,7 +517,7 @@ function toast(t, cls = "certo"){ $("#msg").innerHTML = '<span class="' + cls + 
 function tratarErro(e){
   if (e.message === "TOKEN") { mostrar(false); $("#msgToken").innerHTML = '<p class="erro">O token foi recusado ou expirou. Gere um novo no GitHub e cole acima.</p>'; return; }
   if (e.message === "CONFLITO") { toast("O robô gravou a tabela enquanto você salvava. Os dados foram recarregados: toque em salvar de novo.", "aviso"); carregar().catch(() => {}); return; }
-  if (e.message === "404") { toast("Não encontrei o produtos.csv no repositório robo-de-precos.", "erro"); return; }
+  if (e.message === "404") { toast("Não encontrei o produtos.csv no repositório bot-precos.", "erro"); return; }
   toast("Falha de comunicação com o GitHub (" + e.message + "). Verifique a internet e tente de novo.", "erro");
 }
 function mostrar(conectado){ $("#secToken").hidden = conectado; $("#secNovo").hidden = !conectado; $("#secLista").hidden = !conectado; }
